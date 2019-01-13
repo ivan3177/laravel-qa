@@ -42,7 +42,6 @@
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-remove icons"> Delete</i></button>
                                     </form>
-                                    <a href="" class=""></a>
                                 </div>
                             </div>
                             <p class="lead">
