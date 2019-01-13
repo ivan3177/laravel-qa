@@ -1,6 +1,9 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
+//FontAwesome
+@import "~font-awesome/scss/font-awesome.scss";
+
 // Variables
 @import "variables";
 
@@ -46,4 +49,13 @@
   .view {
     margin-top: 10px;
   }
+}
+
+.icons {
+  font-size: 20px;
+  text-align: center;
+}
+
+.form-delete {
+  display: inline;
 }
