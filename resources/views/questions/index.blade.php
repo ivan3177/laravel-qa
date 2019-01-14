@@ -46,7 +46,7 @@
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">
-                                            <i class="fa fa-remove fa-2x"> Delete</i>
+                                            <i class="fa fa-trash-alt fa-2x"> Delete</i>
                                         </button>
                                     </form>
                                     @endcan
