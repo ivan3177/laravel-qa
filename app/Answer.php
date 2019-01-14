@@ -3,19 +3,36 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Answer;
 
 class Answer extends Model
 {
     protected $fillable = ['body', 'user_id'];
 
+    /**
+     * Setup model's lifetime events handling
+     * @return void
+     */
     public static function boot()
     {
         parent::boot();
 
+        /**
+         * Answer cretion callback
+         * Incement question's answers count due to
+         * new answer created
+         * @var App\Answer
+         */
         static::created(function ($answer) {
             $answer->question->increment('answers_count');
         });
 
+        /**
+         * Answer deletion callback
+         * Deccrement question's answers count due to
+         * answer deletion
+         * @var App\Answer
+         */
         static::deleted(function ($answer) {
             $answer->question->decrement('answers_count');
         });
@@ -56,5 +73,14 @@ class Answer extends Model
     public function getCreatedDateAttribute()
     {
         return $this->created_at->diffForHumans();
+    }
+
+    /**
+     * Get answer's status
+     * @return boolval
+     */
+    public function getStatusAttribute()
+    {
+        return $this->id === $this->question->best_answer_id ? 'vote-accepted' : '';
     }
 }
