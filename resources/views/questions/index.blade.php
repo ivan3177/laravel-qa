@@ -36,14 +36,18 @@
 
                                 <div class="ml-auto">
                                     @can('update', $question)
-                                    <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-sm btn-outline-info"><i class="fa fa-edit icons"> Edit</i></a>
+                                    <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-sm btn-outline-info">
+                                        <i class="fa fa-edit fa-2x"> Edit</i>
+                                    </a>
                                     @endcan
 
                                     @can('delete', $question)
                                     <form class="form-delete" action="{{ route('questions.destroy', $question->id) }}" method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-remove icons"> Delete</i></button>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">
+                                            <i class="fa fa-remove fa-2x"> Delete</i>
+                                        </button>
                                     </form>
                                     @endcan
                                 </div>
