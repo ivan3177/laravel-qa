@@ -15,7 +15,7 @@ class QuestionPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Question  $question
-     * @return mixed
+     * @return boolval
      */
     public function update(User $user, Question $question)
     {
@@ -27,10 +27,10 @@ class QuestionPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Question  $question
-     * @return mixed
+     * @return boolval
      */
     public function delete(User $user, Question $question)
     {
-        return $user->id === $question->user->id && $question->answers < 1;
+        return $user->id === $question->user->id && $question->answers_count < 1;
     }
 }
