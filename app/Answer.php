@@ -31,16 +31,25 @@ class Answer extends Model
      */
     public function user()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
      * Convert markdown stored in database into
      * HTML for human-readable output
-     * @return html
+     * @return mixed
      */
     public function getBodyHtmlAttribute()
     {
         return \Parsedown::instance()->text($this->body);
+    }
+
+    /**
+     * Get human-readable date
+     * @return mixed
+     */
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
