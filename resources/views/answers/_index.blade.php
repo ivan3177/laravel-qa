@@ -10,13 +10,24 @@
                 @foreach ($answers as $answer)
                 <div class="media">
                     <div class="d-flex flex-column vote-controls">
-                        <a class="vote-up" title="This answer is useful">
+                        <a class="vote-up {{ Auth::guest() ? 'off' : ''}}" title="This answer is useful" onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit();">
                             <i class="far fa-thumbs-up fa-2x"></i>
                         </a>
-                        <span class="votes-count">5</span>
-                        <a class="vote-down off" title=" This answer is not useful">
+                        <form style="display: none;" id="up-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="post">
+                            @csrf
+                            <input type="hidden" name="vote" value="1">
+                        </form>
+
+                        <span class="votes-count">{{ $answer->votes_count }}</span>
+
+                        <a class="vote-down {{ Auth::guest() ? 'off' : ''}}" title=" This answer is not useful" onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $answer->id }}').submit();">
                             <i class="far fa-thumbs-down fa-2x"></i>
                         </a>
+                        <form style="display: none;" id="down-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="post">
+                            @csrf
+                            <input type="hidden" name="vote" value="-1">
+                        </form>
+
                         @can ('accept', $answer)
                         <a title="Click to mark as best answer" class="{{ $answer->status }} mt-2" onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();">
                             <i class="fas fa-check fa-2x"></i>
