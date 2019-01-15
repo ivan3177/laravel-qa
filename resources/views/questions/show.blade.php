@@ -20,16 +20,26 @@
 
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a class="vote-up" title="This question is useful">
+                            <a class="vote-up {{ Auth::guest() ? 'off' : ''}}" title="This question is useful" onclick="event.preventDefault(); document.getElementById('up-vote-question-{{ $question->id }}').submit();">
                                 <i class="far fa-thumbs-up fa-2x"></i>
                             </a>
-                            <span class="votes-count">5</span>
-                            <a class="vote-down off" title=" This question is not useful">
+                            <form style="display: none;" id="up-vote-question-{{ $question->id }}" action="/questions/{{ $question->id }}/vote" method="post">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+
+                            <span class="votes-count">{{ $question->votes_count }}</span>
+
+                            <a class="vote-down {{ Auth::guest() ? 'off' : ''}}" title=" This question is not useful" onclick="event.preventDefault(); document.getElementById('down-vote-question-{{ $question->id }}').submit();">
                                 <i class="far fa-thumbs-down fa-2x"></i>
                             </a>
+                            <form style="display: none;" id="down-vote-question-{{ $question->id }}" action="/questions/{{ $question->id }}/vote" method="post">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
+
                             <a title="Click to mark as favorite question(click again to undo)" class="favorite mt-2 {{ Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' : '') }}" onclick="event.preventDefault(); document.getElementById('favorite-question-{{ $question->id }}').submit();">
                                 <i class="fas fa-star fa-2x"></i>
-
                                 <span class="favorites-count mt-1">{{ $question->favorites_count }}</span>
                             </a>
                             <form style="display: none;" id="favorite-question-{{ $question->id }}" action="/questions/{{ $question->id }}/favorites" method="post">

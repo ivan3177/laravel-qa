@@ -11,7 +11,7 @@
                 <div class="media">
                     <div class="d-flex flex-column vote-controls">
                         <a class="vote-up" title="This answer is useful">
-                            <i class="far fa-thumbs-up fa-2phpx"></i>
+                            <i class="far fa-thumbs-up fa-2x"></i>
                         </a>
                         <span class="votes-count">5</span>
                         <a class="vote-down off" title=" This answer is not useful">
