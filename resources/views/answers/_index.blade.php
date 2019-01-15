@@ -11,11 +11,11 @@
                 <div class="media">
                     <div class="d-flex flex-column vote-controls">
                         <a class="vote-up" title="This answer is useful">
-                            <i class="fas fa-caret-up fa-3x"></i>
+                            <i class="far fa-thumbs-up fa-2phpx"></i>
                         </a>
                         <span class="votes-count">5</span>
                         <a class="vote-down off" title=" This answer is not useful">
-                            <i class="fas fa-caret-down fa-3x"></i>
+                            <i class="far fa-thumbs-down fa-2x"></i>
                         </a>
                         @can ('accept', $answer)
                         <a title="Click to mark as best answer" class="{{ $answer->status }} mt-2" onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();">

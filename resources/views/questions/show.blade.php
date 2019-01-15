@@ -21,11 +21,11 @@
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
                             <a class="vote-up" title="This question is useful">
-                                <i class="fas fa-caret-up fa-3x"></i>
+                                <i class="far fa-thumbs-up fa-2x"></i>
                             </a>
                             <span class="votes-count">5</span>
                             <a class="vote-down off" title=" This question is not useful">
-                                <i class="fas fa-caret-down fa-3x"></i>
+                                <i class="far fa-thumbs-down fa-2x"></i>
                             </a>
                             <a title="Click to mark as favorite question(click again to undo)" class="favorite mt-2 {{ Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' : '') }}" onclick="event.preventDefault(); document.getElementById('favorite-question-{{ $question->id }}').submit();">
                                 <i class="fas fa-star fa-2x"></i>

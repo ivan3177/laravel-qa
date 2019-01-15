@@ -4,7 +4,7 @@ require('dotenv').config();
 mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'public/css').version();
 
 let siteName = process.env.SITE_NAME; // site name
-let userName = process.env.HOST_DEV_USER; // developer username
+let userName = process.env.USER; // developer username
 
 mix.browserSync({
     proxy: 'https://' + siteName + '.test',
