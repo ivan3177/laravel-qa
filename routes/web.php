@@ -11,14 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('questions');
-});
+Route::get('/', 'QuestionsController@index');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('questions', 'QuestionsController')->except('show');
 Route::resource('questions.answers', 'AnswersController')->only(['store', 'edit', 'update', 'destroy']);
