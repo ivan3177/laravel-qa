@@ -44,7 +44,17 @@ class Question extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return \Parsedown::instance()->text($this->body);
+        return \Purifier::clean(\Parsedown::instance()->text($this->body));
+    }
+
+    public function getExcerptAttribute()
+    {
+        return $this->excerpt(250);
+    }
+
+    public function excerpt($lenght)
+    {
+        return str_limit(strip_tags($this->body_html), $lenght);
     }
 
     public function answers()
