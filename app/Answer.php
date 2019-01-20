@@ -10,6 +10,10 @@ class Answer extends Model
     use Traits\VotableTrait;
     protected $fillable = ['body', 'user_id'];
 
+    protected $appends = [
+      'created_date'
+    ];
+
     /**
      * Setup model's lifetime events handling
      * @return void
