@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\User;
+
 trait VotableTrait
 {
     public function votes()
